@@ -43,7 +43,7 @@ Porque solo mina bajo demanda.
 ```
 web3.currentProvider.host
 'http://127.0.0.1:7545'
-´´´
+```
 
 - ### Acceda a ​ethgasstation​ y convierta el precio del gas en ese instante a Ether.
   
