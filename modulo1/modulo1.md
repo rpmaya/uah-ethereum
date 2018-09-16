@@ -45,7 +45,7 @@ web3.currentProvider.host
 'http://127.0.0.1:7545'
 ```
 
-- ### Acceda a ​[ethgasstation​]() y convierta el precio del gas en ese instante a Ether.
+- ### Acceda a ​[ethgasstation​](https://ethgasstation.info) y convierta el precio del gas en ese instante a Ether.
   
  > El precio actual del Gas es de 5.6 Gwei, es decir 5.6 / 10^9 ether = 0.0000000056 ether
 
