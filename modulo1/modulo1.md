@@ -79,7 +79,7 @@ web3.currentProvider.host
 
 ![Img26](./img/confirmTransfer.png)
 
-> Por último, comprobamos en Metatask, y con la llamada *balanceOf*, en los *Deployed Contracts* de Remix, que hemos gastado los 100 token
+> Por último, comprobamos en Metatask, y con la llamada *balanceOf*, en los *Deployed Contracts* de Remix, que hemos gastado los 100 tokens
 
 ![Img27](./img/balanceOf.png)
 
