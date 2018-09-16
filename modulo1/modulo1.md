@@ -1,4 +1,6 @@
-# Módulo 1, Ejercicio 1
+# MÓDULO 1
+
+# Ejercicio 1
 
 ## Indique tanto la instrucción utilizada como el resultado de la misma.
 
@@ -47,3 +49,5 @@ Porque solo mina bajo demanda.
 - ### Acceda a ​ethgasstation​ y convierta el precio del gas en ese instante a Ether.
   
  El precio actual del Gas es de 3.3 Gwei, es decir 3.3 / 10^9 ether = 0.0000000033 ether
+
+ ![] (img/gasstation.png)
