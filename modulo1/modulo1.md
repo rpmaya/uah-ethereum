@@ -50,4 +50,4 @@ Porque solo mina bajo demanda.
   
  El precio actual del Gas es de 3.3 Gwei, es decir 3.3 / 10^9 ether = 0.0000000033 ether
 
- ![] (img/gasstation.png)
+ ![GitHub Logo] (/img/gasstation.png)
