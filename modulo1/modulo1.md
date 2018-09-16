@@ -18,7 +18,7 @@ web.eth.syncing
 false
 ```
 
-Porque solo sincroniza bajo demanda.
+> Porque solo sincroniza bajo demanda.
 
 - ### Balance de la cuenta que ha desplegado el contrato en la blockchain.
 ```
@@ -37,7 +37,7 @@ web3.eth.blockNumber
 0
 ```
 
-Porque solo mina bajo demanda.
+> Porque solo mina bajo demanda.
 
 - ### Dirección del host de la blockchain.
 ```
@@ -45,8 +45,8 @@ web3.currentProvider.host
 'http://127.0.0.1:7545'
 ```
 
-- ### Acceda a ​ethgasstation​ y convierta el precio del gas en ese instante a Ether.
+- ### Acceda a ​[ethgasstation​]() y convierta el precio del gas en ese instante a Ether.
   
- El precio actual del Gas es de 5.6 Gwei, es decir 5.6 / 10^9 ether = 0.0000000056 ether
+ > El precio actual del Gas es de 5.6 Gwei, es decir 5.6 / 10^9 ether = 0.0000000056 ether
 
- ![Img1] (./img/gasstation.png)
+ ![Img0](./img/gasstation.png)
