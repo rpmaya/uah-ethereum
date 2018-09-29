@@ -2,7 +2,7 @@
 
 ## Ejercicio 2
 
-> Primero intento acceder a la adress con
+> Primero intento acceder a la address con
 ```
 eth.coinbase
 ```
@@ -26,7 +26,7 @@ eth.coinbase
 ```
 ![Img122](./img/peers.png)
 
-> Y, posteriormente, sus alturas máximas de bloque con
+> Y, posteriormente, sus alturas máximas de bloque (number) con
 ```
 > eth.getBlock(<head>)
 ```
