@@ -6,7 +6,7 @@
 ```
 eth.coinbase
 ```
-> Pero obtengo error de web3, por lo que prosigo con
+> Pero obtengo error en web3 (con el full node el error es "etherbase must be explicity especified"), por lo que prosigo con
 ```
 > admin.nodeinfo
 > eth.getBlock(<genesis>)
@@ -24,9 +24,10 @@ eth.coinbase
 ```
 > admin.peers
 ```
-![Img121](./img/peers.png)
+![Img122](./img/peers.png)
 
 ```
 > eth.getBlock(<head>)
-``
-![Img121](./img/getBlock.png)
+```
+
+![Img123](./img/getBlock.png)
