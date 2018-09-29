@@ -6,7 +6,7 @@
 ```
 eth.coinbase
 ```
-> Pero obtengo error en web3 (con el full node el error es "etherbase must be explicity especified"), por lo que prosigo con
+> Pero obtengo error en web3 (con light, con full node el error es "etherbase must be explicity especified"), por lo que prosigo con
 ```
 > admin.nodeinfo
 > eth.getBlock(<genesis>)
@@ -20,7 +20,7 @@ eth.coinbase
 5
 ```
 
-> Obtenemos información acerca de los nodos y, posteriormente, sus alturas máxima de bloque con
+> Obtenemos información acerca de los nodos
 ```
 > admin.peers
 ```
@@ -30,4 +30,5 @@ eth.coinbase
 > eth.getBlock(<head>)
 ```
 
+> Y, posteriormente, sus alturas máximas de bloque con
 ![Img123](./img/getBlock.png)
