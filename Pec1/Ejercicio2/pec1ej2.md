@@ -6,7 +6,7 @@
 ```
 eth.coinbase
 ```
-> Pero obtengo error en web3 (con light, con full node el error es "etherbase must be explicity especified"), por lo que prosigo con
+> Pero obtengo error en web3 (con light "not supported", con full node el error es "etherbase must be explicity especified"), por lo que prosigo con
 ```
 > admin.nodeinfo
 > eth.getBlock(<genesis>)
