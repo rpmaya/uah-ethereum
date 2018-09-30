@@ -8,9 +8,10 @@
 
 ![Img131](./img/operationCodes.png)
 
-> Después, con la dirección del contrato, lo guardamos en una variable y obtenemos los identificadores de las funciones del contrato:
+> Después, con la dirección del contrato, lo guardamos en una variable y obtenemos los identificadores de las funciones de dicho contrato:
 
 ![Img132](./img/functions1.png)
+
 ![Img133](./img/functions2.png)
 
 > Por último, obtenemos la estimación del gas utilizado por nuestra función "hi" con:
