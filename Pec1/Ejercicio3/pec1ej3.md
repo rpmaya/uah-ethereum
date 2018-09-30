@@ -8,7 +8,7 @@
 
 ![Img131](./img/operationCodes.png)
 
-> Después, con la dirección del contrato, lo guardamos en una variable y obtenemos los identificadores de las funciones de dicho contrato:
+> Después, con la dirección del contrato, lo guardamos en una variable y obtenemos los identificadores de las funciones de dicho contrato, la programada por nosotros es la función "hi":
 
 ![Img132](./img/functions1.png)
 
