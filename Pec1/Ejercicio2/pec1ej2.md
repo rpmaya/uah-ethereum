@@ -2,12 +2,8 @@
 
 ## Ejercicio 2
 
-> Primero intento acceder a la address con
-```
-eth.coinbase
-```
-> Pero obtengo error en web3 (con un light node el error es "not supported", y con un full node es "etherbase must be explicity especified"), por lo que prosigo con
-```
+> Primero ejecutamos:
+
 > admin.nodeinfo
 > eth.getBlock(<genesis>)
 ```
