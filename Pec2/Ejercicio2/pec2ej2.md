@@ -12,10 +12,12 @@
 
 > Para desplegar la DAPP, primero creamos el directorio "dist/" dentro del proyecto y copiamos ahí el contenido de "src/" y de "build/contracts/"
 
+```
 cd pet-shop-tutorial
 mkdir dist
 rsync -r src/ dist/
 rsync -r build/contracts/ dist/
+```
 
 > Realizamos un pequeño cambio en src/app.js, para que pueda localizar pets.json, es decir, en la línea 7, modificamos la ruta en .getJSON(../pets.json) por .getJSON(./pets.json)
 
