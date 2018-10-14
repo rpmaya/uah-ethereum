@@ -6,8 +6,35 @@
 
 > Instalamos IPFS, inicializamos el repositorio y el demonio siguiendo estas [instrucciones](https://docs.ipfs.io/introduction/usage/)
 
-> 
+![Img221](./img/ipfsDaemon.png)
 
-> Se adjunta pantallazo con los comandos y sus salidas:
+> Para desplegarlo, primero creamos el directorio "dist/" dentro del proyecto y copiamos ahí el contenido de "src/" y de "build/contracts/"
 
-![Img221](./img/)
+> cd pet-shop-tutorial
+> mkdir build
+> rsync -r src/ dist/
+> rsync -r build/contracts/ dist/
+
+> Realizamos un pequeño cambio en src/app.js, para que pueda localizar pets.json, es decir, en la línea 7, modificamos la ruta en .getJSON(../pets.json) por .getJSON(./pets.json)
+
+> Entonces subimos el contenido de "dist/" a IPFS
+
+![Img222](./img/ipfs.png)
+
+> Donde el hash del raíz de la aplicación es "QmcrUS9GMuGUTzGYsovUUrxxsjZRMPfoSXqba6bYPsHgFY" 
+
+> A continuación publicamos el nombre:
+
+![Img223](./img/ipfsPublish.png)
+
+> Accedemos a la aplicación a través de IPFS:
+
+![Img223](./img/RicardoPetShop.png)
+
+> Intentamos adoptar a Melisa
+
+![Img224](./img/adoptMelisa.png)
+
+> Y comprobamos que así ha sido!
+
+![Img225](./img/adoptedMelisa.png)
