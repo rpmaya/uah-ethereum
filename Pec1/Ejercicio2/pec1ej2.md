@@ -6,7 +6,7 @@
 
 > admin.nodeinfo
 > eth.getBlock(<genesis>)
-```
+
 
 ![Img121](./img/getGenesis.png)
 
