@@ -21,7 +21,7 @@
 
 > Donde el hash del raíz de la aplicación es "20206c0c6aeefcd31d39b7ea308470effbc01a0e30df8af7ab8aa6f0fbd7cbd3"
 
-> A continuación, modificamos el contenido para nuestro nombre: "psric.test" para que apunte a este hash:
+> A continuación, con la consola de geth, modificamos el contenido para nuestro nombre: "psric.test" para que apunte a este hash:
 
 ![Img234](./img/ens.png)
 
