@@ -25,6 +25,6 @@
 
 ![Img234](./img/ens.png)
 
-> Accedemos a la aplicación a través de SWARM a través del ENS "rictok.test":
+> Accedemos a la aplicación a través de SWARM a través del ENS "psric.test":
 
 ![Img235](./img/psric.png)
