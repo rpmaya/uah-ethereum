@@ -2,9 +2,7 @@
 
 ## Ejercicio 3 - SWARM
 
-> Arrancamos "ganache-cli" y desplegamos con "truffle migrate", como hacemos habitualmente para test en local.
-
-> Sincronizamos con la testnet Rinkeby, como hicimos en el ejercicio 1:
+> Sincronizamos con la testnet Rinkeby:
 
 ![Img231](./img/rinkeby.png)
 
@@ -15,7 +13,7 @@
 ![Img232](./img/swarm.png)
 
 
-> Subimos el contenido a SWARM (src + build/contracts) en build:
+> Subimos el contenido a SWARM en "build" (con los src):
 
 ![Img233](./img/swarmUpload.png)
 
