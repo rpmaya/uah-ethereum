@@ -75,6 +75,11 @@ const App = {
     status.innerHTML = message
   },
 
+  setStatusContract: function (message) {
+    const status = document.getElementById('statusContract')
+    status.innerHTML = message
+  },
+
   refreshBalance: function () {
     const self = this
 
@@ -155,6 +160,28 @@ const App = {
     }).catch(function (e) {
       console.log(e)
       self.setStatus('Error getting price; see log.')
+    })
+
+    Tokens.deployed().then(function (instance) {
+      token = instance
+      return token.getAddress.call({ from: account })
+    }).then(function (value) {
+      const addressElement = document.getElementById('getAddress')
+      addressElement.innerHTML = value.valueOf()
+    }).catch(function (e) {
+      console.log(e)
+      self.setStatus('Error getting address; see log.')
+    })
+
+    Tokens.deployed().then(function (instance) {
+      token = instance
+      return token.isStopped.call({ from: account })
+    }).then(function (value) {
+      const addressElement = document.getElementById('isStopped')
+      addressElement.innerHTML = value.valueOf()
+    }).catch(function (e) {
+      console.log(e)
+      self.setStatus('Error getting if stopped; see log.')
     })
 
   },
@@ -241,7 +268,6 @@ const App = {
     Tokens.deployed().then(function (instance) {
       const _value = parseInt(document.getElementById('amountEth').value)
       token = instance
-      //account is owner??? to: account
       return token.sendTransaction({ from: account, to: accounts[0], value: _value * 1000000000000000000 })
     }).then(function () {
       self.setStatusBuy('Buy complete!')
@@ -249,6 +275,23 @@ const App = {
     }).catch(function (e) {
       console.log(e)
       self.setStatusBuy('Error buying coin; see log.')
+    })
+
+  },
+
+  toggleContract: function () {
+    const self = this
+    this.setStatusContract('Initiating circuit breaker... (please wait)')
+    let token
+    Tokens.deployed().then(function (instance) {
+      token = instance
+      return token.breaker({ from: account })
+    }).then(function () {
+      self.setStatusContract('Circuit breaker complete!')
+      self.refreshBalance()
+    }).catch(function (e) {
+      console.log(e)
+      self.setStatusBuy('Error setting circuit breaker; see log.')
     })
 
   }
@@ -280,6 +323,14 @@ window.addEventListener('load', function () {
     // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
     window.web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:9545'))
   }
+
+  // Refresh page if address changes
+  var accountInterval = setInterval(function() {
+    if (web3.eth.accounts[0] !== account) {
+      account = web3.eth.accounts[0];
+      window.location.reload();
+    }
+  }, 100);
 
   App.start()
 })
