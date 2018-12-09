@@ -268,7 +268,7 @@ const App = {
     Tokens.deployed().then(function (instance) {
       const _value = parseInt(document.getElementById('amountEth').value)
       token = instance
-      return token.sendTransaction({ from: account, to: accounts[0], value: _value * 1000000000000000000 })
+      return token.buy({ from: account, to: accounts[0], value: _value * 1000000000000000000 })
     }).then(function () {
       self.setStatusBuy('Buy complete!')
       self.refreshBalance()
