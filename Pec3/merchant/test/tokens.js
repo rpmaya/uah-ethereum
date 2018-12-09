@@ -1,5 +1,7 @@
 var Tokens = artifacts.require('./Tokens.sol')
 
+var balanceContract = -1; //Cost of gas
+
 contract('Tokens', function (accounts) {
 
     it('should put 100000 Tokens in the first account', function () {
@@ -84,7 +86,7 @@ contract('Tokens', function (accounts) {
   
       // Get initial balances of first and second account.
       var accountOne = accounts[0]
-      var accountTwo = accounts[1]
+      var accountTwo = accounts[2]
   
       var accountOneStartingBalance
       var accountTwoStartingBalance
@@ -93,7 +95,7 @@ contract('Tokens', function (accounts) {
   
       var amount = 3
       var conversion
-      var balanceContract
+      var balanceOld = balanceContract
   
       return Tokens.deployed().then(function (instance) {
         token = instance
@@ -116,7 +118,7 @@ contract('Tokens', function (accounts) {
         conversion = price.toNumber() * amount
         return token.getBalance.call()
       }).then(function (balance) {
-        balanceContract = balance.toNumber() + 1 //cost of gas
+        balanceContract = balance.toNumber()
   
         assert.equal(
           accountOneEndingBalance,
@@ -130,11 +132,69 @@ contract('Tokens', function (accounts) {
         )
         assert.equal(
           balanceContract,
-          amount,
+          amount + balanceOld,
           "Buying: Amount in ETH wasn't correctly sent to the contract"
         )  
       })
     })
+
+    it('should buy tokens correctly, though fallback function', function () {
+      var token
+  
+      // Get initial balances of first and second account.
+      var accountOne = accounts[0]
+      var accountTwo = accounts[3]
+  
+      var accountOneStartingBalance
+      var accountTwoStartingBalance
+      var accountOneEndingBalance
+      var accountTwoEndingBalance
+  
+      var amount = 2
+      var conversion
+      var balanceOld = balanceContract
+  
+      return Tokens.deployed().then(function (instance) {
+        token = instance
+        return token.balanceOf.call(accountOne)
+      }).then(function (balance) {
+        accountOneStartingBalance = balance.toNumber()
+        return token.balanceOf.call(accountTwo)
+      }).then(function (balance) {
+        accountTwoStartingBalance = balance.toNumber()
+        return token.sendTransaction({ from: accountTwo, to: accountOne, value: amount * 1000000000000000000 })
+      }).then(function () {
+        return token.balanceOf.call(accountOne)
+      }).then(function (balance) {
+        accountOneEndingBalance = balance.toNumber()
+        return token.balanceOf.call(accountTwo)
+      }).then(function (balance) {
+        accountTwoEndingBalance = balance.toNumber()
+        return token.getPrice.call()
+      }).then(function (price) {
+        conversion = price.toNumber() * amount
+        return token.getBalance.call()
+      }).then(function (balance) {
+        balanceContract = balance.toNumber()
+  
+        assert.equal(
+          accountOneEndingBalance,
+          accountOneStartingBalance - conversion,
+          "Sending transaction: Amount in Token wasn't correctly taken from the sender"
+        )
+        assert.equal(
+          accountTwoEndingBalance,
+          accountTwoStartingBalance + conversion,
+          "Sending transaction: Amount in Token wasn't correctly sent to the receiver"
+        )
+        assert.equal(
+          balanceContract,
+          amount + balanceOld,
+          "Sending transaction: Amount in ETH wasn't correctly sent to the contract"
+        )  
+      })
+    })
+
 
     it('should mint tokens correctly', function () {
         var token
@@ -189,6 +249,18 @@ contract('Tokens', function (accounts) {
           )
         })
       })
+
+      it('should stop contract', function () {
+        var token
+        return Tokens.deployed().then(function (instance) {
+          token = instance
+          return token.breaker.call()
+        }).then(function (stopped) {
+          return token.isStopped.call() 
+
+          assert.equal(stopped.valueOf(), "true", "contract wasn't sttoped")
+        })
+    })
 
   })
   
