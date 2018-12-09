@@ -88,7 +88,7 @@ contract Tokens is Owned, usingOraclize {
 
     /**
      * @dev Destroy tokens: Remove `_value` tokens from the system irreversibly
-     * @param _value the amount of money to burn
+     * @param _value the amount of tokens to burn
      * @return success If the transaction was fine.
      */
     function burn(uint256 _value) public notStopped returns (bool success) {
