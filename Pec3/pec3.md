@@ -105,7 +105,6 @@ TESTING
 
 EXTRAS
 1. Uso de Oráculos
-   - TODO: Detallar procedimiento realizado, añadir guía para el lanzamiento del oráculo y dejar claro su funcionamiento
    - Como vamos a ejecutar sobre una blockchain de test local (ganache-cli), vamos a necesitar ethereum-bridge, para ello lo clonamos a nuestro local tal que:
 ```
 git clone https://github.com/oraclize/ethereum-bridge.git
@@ -114,7 +113,7 @@ git clone https://github.com/oraclize/ethereum-bridge.git
 ```
 ganache-cli -m "<texto cualquiera>"
 ```
-Por ejemplo, en nuestro caso:
+Por ejemplo, en nuestro caso (es útil para Metamask también, solo importamos cuentas una vez):
 ```
 ganache-cli -m "El perro de San Roque"
 ```
