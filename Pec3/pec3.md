@@ -6,7 +6,7 @@
 
 1. Send 
 2. Buy
-3. Mint
+3. Mint (only by the owner)
 4. Burn
 
 > A continuación pasamos a detallar cada una de las partes:
