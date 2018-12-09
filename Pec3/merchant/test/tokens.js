@@ -18,7 +18,7 @@ contract('Tokens', function (accounts) {
         })
     })
 
-    it('should put RicToken as token name', function () {
+    it('should be RicToken as token name', function () {
         return Tokens.deployed().then(function (instance) {
           return instance.getName.call()
         }).then(function (name) {
@@ -26,7 +26,7 @@ contract('Tokens', function (accounts) {
         })
     })
 
-    it('should put RIC as token symbol', function () {
+    it('should be RIC as token symbol', function () {
         return Tokens.deployed().then(function (instance) {
           return instance.getSymbol.call()
         }).then(function (name) {
@@ -76,6 +76,63 @@ contract('Tokens', function (accounts) {
           accountTwoStartingBalance + amount,
           "Amount wasn't correctly sent to the receiver"
         )
+      })
+    })
+
+    it('should buy tokens correctly', function () {
+      var token
+  
+      // Get initial balances of first and second account.
+      var accountOne = accounts[0]
+      var accountTwo = accounts[1]
+  
+      var accountOneStartingBalance
+      var accountTwoStartingBalance
+      var accountOneEndingBalance
+      var accountTwoEndingBalance
+  
+      var amount = 3
+      var conversion
+      var balanceContract
+  
+      return Tokens.deployed().then(function (instance) {
+        token = instance
+        return token.balanceOf.call(accountOne)
+      }).then(function (balance) {
+        accountOneStartingBalance = balance.toNumber()
+        return token.balanceOf.call(accountTwo)
+      }).then(function (balance) {
+        accountTwoStartingBalance = balance.toNumber()
+        return token.buy({ from: accountTwo, to: accountOne, value: amount * 1000000000000000000 })
+      }).then(function () {
+        return token.balanceOf.call(accountOne)
+      }).then(function (balance) {
+        accountOneEndingBalance = balance.toNumber()
+        return token.balanceOf.call(accountTwo)
+      }).then(function (balance) {
+        accountTwoEndingBalance = balance.toNumber()
+        return token.getPrice.call()
+      }).then(function (price) {
+        conversion = price.toNumber() * amount
+        return token.getBalance.call()
+      }).then(function (balance) {
+        balanceContract = balance.toNumber() + 1 //cost of gas
+  
+        assert.equal(
+          accountOneEndingBalance,
+          accountOneStartingBalance - conversion,
+          "Buying: Amount in Token wasn't correctly taken from the sender"
+        )
+        assert.equal(
+          accountTwoEndingBalance,
+          accountTwoStartingBalance + conversion,
+          "Buying: Amount in Token wasn't correctly sent to the receiver"
+        )
+        assert.equal(
+          balanceContract,
+          amount,
+          "Buying: Amount in ETH wasn't correctly sent to the contract"
+        )  
       })
     })
 
@@ -132,7 +189,6 @@ contract('Tokens', function (accounts) {
           )
         })
       })
-
 
   })
   
