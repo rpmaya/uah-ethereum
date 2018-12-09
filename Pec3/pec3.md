@@ -106,4 +106,52 @@ TESTING
 EXTRAS
 1. Uso de Oráculos
    - TODO: Detallar procedimiento realizado, añadir guía para el lanzamiento del oráculo y dejar claro su funcionamiento
-   - 
+   - Como vamos a ejecutar sobre una blockchain de test local (ganache-cli), vamos a necesitar ethereum-bridge, para ello lo clonamos a nuestro local tal que:
+```
+git clone https://github.com/oraclize/ethereum-bridge.git
+```
+  - Para lanzar nuestra blockchain local siempre con las mismas direcciones ejecutamos
+```
+ganache-cli -m "<texto cualquiera>"
+```
+Por ejemplo, en nuestro caso:
+```
+ganache-cli -m "El perro de San Roque"
+```
+  - Ahora lanzamos ethereum-bridge con la última dirección, la décima del array:
+```
+cd ethereum-bridge/
+node bridge -a 9 
+```
+  - Esperamos hasta ver algo como (y guardamos el valor de OAR):
+```
+Please add this line to your contract constructor:
+
+OAR = OraclizeAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475);
+```
+
+ - Ahora descargamos [OraclizeAPI](https://github.com/oraclize/ethereum-api/blob/master/oraclizeAPI_0.4.25.sol) y lo renombramos como "usingOraclize.sol" dentro de nuestro directorio de contratos.
+
+- Por último, escribimos el siguiente código en [Tokens.sol](https://github.com/rpmaya/uah-ethereum/blob/master/Pec3/merchant/contracts/Tokens.sol):
+```
+import "./usingOraclize.sol";
+...
+contract Tokens is Owned, usingOraclize {
+...
+  constructor(...) public {
+        OAR = OraclizeAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475); // For testing only, remove in production
+        ...
+}
+  ...
+  function __callback(bytes32 _myid, string _result) public {
+        require (msg.sender == oraclize_cbAddress());
+        bytes memory tempEmptyStringTest = bytes(_result); // Uses memory
+        if (tempEmptyStringTest.length > 0) //Just updates the price if receives data from Oracle, otherwise keeps the last value
+            price = parseInt(_result);
+    }  
+
+  function update() public payable {
+        oraclize_query("URL","json(https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR).EUR");
+    }
+```
+  - Es decir, consulta el precio ETH/EUR en min-api.cryptocompare.com para mantener el precio de nuestro Token fijo al EURO. Por ejemplo, si 1ETH vale 80EUR, al comprar nuestro Token con ETH, para cada ETH recibiremos 80 Tokens. Por tanto, si compráramos 2ETH, recibiríamos 160 de nuestros Tokens (si el precio ETH/EUR es de 80). El precio ETH/EUR se actualiza antes de cada compra.
