@@ -136,7 +136,7 @@ OAR = OraclizeAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475);
 ```
 import "./usingOraclize.sol";
 ...
-contract Tokens is Owned, usingOraclize {
+contract Tokens is usingOraclize ... {
 ...
   constructor(...) public {
         OAR = OraclizeAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475); // For testing only, remove in production
