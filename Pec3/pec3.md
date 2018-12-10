@@ -57,13 +57,11 @@ var accountInterval = setInterval(function() {
   }, 100);
 ```
 
-6. Firmar transacciones usando MetaMask
-Donde al introducir el número de ether a enviar para comprar Token, se nos muestra la confirmación en Metamask y se informa al usuario con "Initiating transaction...(please wait) justo debajo del botón "Buy Token"
+6. Firmar transacciones usando MetaMask: Donde al introducir el número de ether a enviar para comprar Token, se nos muestra la confirmación en Metamask y se informa al usuario con "Initiating transaction...(please wait)" justo debajo del botón "Buy Token"
    
 ![Img32](./img/transaction.png)
 
-7. Guiar al usuario
-Una vez realizada la transacción, se le informa al usuario con "Buy Complete!" en el mismo lugar.
+7. Guiar al usuario: Por ejemplo, una vez realizada la transacción, se le informa al usuario con "Buy Complete!" en el mismo lugar.
 
 ![Img33](./img/buyComplete.png)
 
