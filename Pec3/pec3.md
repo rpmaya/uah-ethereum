@@ -56,6 +56,7 @@ var accountInterval = setInterval(function() {
     }
   }, 100);
 ```
+
 6. Firmar transacciones usando MetaMask
 Donde al introducir el número de ether a enviar para comprar Token, se nos muestra la confirmación en Metamask y se informa al usuario con "Initiating transaction...(please wait) justo debajo del botón "Buy Token"
    
