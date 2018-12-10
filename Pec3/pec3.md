@@ -12,18 +12,25 @@
 > Para arrancar el smart contract en ganache-cli (blockchain local):
 
 1. Ejecutamos ganache-cli con una regla nemotécnica para obtener siempre las mismas direcciones
+```
 # ganache-cli -m "El perro de San Roque”
-
+```
 2. Arrancamos ethereum-bridge (clonado previamente) para el uso de Oráculos:
+```
 # cd ethereum-bridge/
 # node bridge -a 9 
+```
 (Toma la address 10)
 
 3. Compilamos y desplegamos nuestros smart contracts (para desplegar requiere que esté levantado ganache-cli en el 8545 y el servicio de ethereum-bridge):
+```
 # truffle compile && truffle migrate
+```
 
 4. Arrancamos un servidor web local:
+```
 # npm run dev
+```
 
 5. Podemos acceder a nuestro servidor web local en 
 http://localhost:8545
