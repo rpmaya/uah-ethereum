@@ -188,7 +188,7 @@ contract Tokens is usingOraclize ... {
 ```
   - Es decir, consulta el precio ETH/EUR en min-api.cryptocompare.com para mantener el precio de nuestro Token fijo al EURO. Por ejemplo, si 1ETH vale 80EUR, al comprar nuestro Token con ETH, para cada ETH recibiremos 80 Tokens. Por tanto, si compráramos 2ETH, recibiríamos 160 de nuestros Tokens (si el precio ETH/EUR es de 80). El precio ETH/EUR se actualiza antes de cada compra.
 
-  - En el footer de la página, vemos que el precio del Ether en el momento de la captura a través del Oráculo es de 78 Euros, por tanto con 1ETH podremos comprar 78 Tokens.
+  - En el footer de la página, vemos que el precio del Ether en el momento de la captura a través del Oráculo es de 78 Euros, por tanto con 1ETH podremos comprar 78 Tokens (Last Price).
 
 ![Img35](./img/Oracle.png)
 
