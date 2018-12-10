@@ -134,6 +134,7 @@ function _transfer(address _from, address _to, uint256 _value) internal notStopp
 ```
 TESTING
 1. TODO (Justificar, comentar y mostrar pantallazo con los tests pasados)
+![Img34](./img/Test.png)
 
 EXTRAS
 1. Uso de Oráculos
@@ -189,5 +190,5 @@ contract Tokens is usingOraclize ... {
 
   - En el footer de la página, vemos que el precio del Ether en el momento de la captura a través del Oráculo es de 78 Euros, por tanto con 1ETH podremos comprar 78 Tokens.
 
-![Img34](./img/Oracle.png)
+![Img35](./img/Oracle.png)
 
