@@ -57,9 +57,17 @@ var accountInterval = setInterval(function() {
   }, 100);
 ```
 6. Firmar transacciones usando MetaMask
-7. Guiar al usuario
+Donde al introducir el número de ether a enviar para comprar Token, se nos muestra la confirmación en Metamask y se informa al usuario con "Initiating transaction...(please wait) justo debajo del botón "Buy Token"
    
-TODO ![Img32](./img/FirmaYGuia.png)
+![Img32](./img/transaction.png)
+
+7. Guiar al usuario
+Una vez realizada la transacción, se le informa al usuario con "Buy Complete!" en el mismo lugar.
+
+![Img33](./img/buyComplete.png)
+
+
+
 
 LIBRERÍA
 1. Se usa la librería [ConvertLib.sol](https://github.com/rpmaya/uah-ethereum/blob/master/Pec3/merchant/contracts/ConvertLib.sol), para ello añadimos:
