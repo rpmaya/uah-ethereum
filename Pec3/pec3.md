@@ -121,7 +121,8 @@ function _transfer(address _from, address _to, uint256 _value) internal notStopp
         require(balanceOf[_to] + _value >= balanceOf[_to]);
         ...
 ```
-4. TODO: Comentar patrones de actualización (no es necesario implementar)
+4. Un método para actualizar contratos podría ser utilizar un sistema de versiones. Por ejemplo, podría tener un contrato de entrada que, simplemente, reenvíe todas las llamadas a la versión más reciente del contrato. Otro método sería introducir el código en una biblioteca, para después usar la función CALLCODE para llamar al código ubicado en una dirección específica y actualizable. De esta manera, los datos persistirían entre versiones. Por ejemplo, podríamos utilizar la operación DELEGATECALL que permite reenviar llamadas a otro contrato manteniendo el msg.sender y el almacenamiento. Para mayor detalle, véase https://blog.zeppelin.solutions/proxy-libraries-in-solidity-79fbe4b970fd
+      
 5. Comentarios
    - En nuestro Smart Contract [Tokens.sol](https://github.com/rpmaya/uah-ethereum/blob/master/Pec3/merchant/contracts/Tokens.sol), realizamos comentarios para las funciones públicas tal que, por ejemplo:
 ```
