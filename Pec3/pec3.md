@@ -134,7 +134,7 @@ function _transfer(address _from, address _to, uint256 _value) internal notStopp
     function burn(uint256 _value) public notStopped returns (bool success) {...}
 ```
 TESTING
-1. TODO (Justificar, comentar y mostrar pantallazo con los tests pasados)
+1. TODO (Justificar y comentar)
 ![Img34](./img/Test.png)
 
 EXTRAS
