@@ -149,10 +149,10 @@ TESTING
 
 - Comprobamos que se pueden comprar Tokens correctamente con Ether:
   1. Should buy tokens correctly: Se obtienen los balances iniciales del owner del contrato (account[0]) y del comprador (account[2]) de Tokens. Después llamamos a la función buy para comprar Tokens con 3 Ethers. Se vuelve a obtener los balances y a través del Oráculo obtenemos la Conversión (precio ETH/EUR) que se multiplicará por el amount (3), y ese será el número de Tokens comprados. Se comprueba que la cuenta del propietario tiene ese número de Tokens comprados  de menos, así como el comprador de más, comparado con sus balances iniciales.
-  2. Should buy tokens correctly, though fallback function: Lo mismo que la anterior, pero en este caso llamamos a la función de web3 sendTransaction con 2ETH para probar nuestra función anónima de fallback (el cual, al igual que la función pública buy, llamará a la función interna _buy)
+  2. Should buy tokens correctly, though fallback function: Lo mismo que la anterior, pero en este caso llamamos a la función de web3 sendTransaction con 2ETH para probar nuestra función anónima de fallback (la cual, al igual que la función pública buy, llamará a la función interna _buy).
 
 - Comprobamos que se pueden forjar y quemar nuevos Tokens:
-  1. Should mint tokens correctly: Obtiene el supply inicial a través de la función totalSupply. Después se llama a la función mint con 1000 como parámetro (amount). Y después de obtener el supply se comprueba que ahora este es el inicial más los 1000 (amount) nuevos forjados.
+  1. Should mint tokens correctly: Obtiene el supply inicial a través de la función totalSupply. Después se llama a la función mint con 1000 como parámetro (amount). Y después de obtener nuevamente el supply, se comprueba que ahora este es el inicial más los 1000 (amount) nuevos forjados.
   2. Should burn tokens correctly: Lo mismo que el anterior, pero en esta ocasión comprobamos que el supply es el inicial menos los 1000 (amount) quemados.
 
 - Comprobamos la funcionalidad "circuit breaker":
@@ -168,7 +168,7 @@ git clone https://github.com/oraclize/ethereum-bridge.git
 ```
 ganache-cli -m "<texto cualquiera>"
 ```
-Por ejemplo, en nuestro caso (es útil para Metamask también, solo importamos cuentas una vez):
+Por ejemplo, en nuestro caso (es también útil para Metamask, solo importamos cuentas una vez):
 ```
 ganache-cli -m "El perro de San Roque"
 ```
@@ -213,4 +213,6 @@ contract Tokens is usingOraclize ... {
   - En el footer de la página, vemos que el precio del Ether en el momento de la captura a través del Oráculo es de 78 Euros, por tanto con 1ETH podremos comprar 78 Tokens (Last Price).
 
 ![Img35](./img/Oracle.png)
+
+ - Si hubiese algún problema con el Oráculo, se mantendría el último valor que tuviese (se inicializa a 100).
 
