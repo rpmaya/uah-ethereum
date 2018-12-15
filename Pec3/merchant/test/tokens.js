@@ -225,7 +225,7 @@ contract('Tokens', function (accounts) {
 
       it('should burn tokens correctly', function () {
         var token
-        // Get initial balances of first and second account.
+        // Get initial and final supply.
         var startingSupply
         var endingSupply
 
