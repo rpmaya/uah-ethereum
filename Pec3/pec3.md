@@ -214,5 +214,5 @@ contract Tokens is usingOraclize ... {
 
 ![Img35](./img/Oracle.png)
 
- - Si hubiese algún problema con el Oráculo, se mantendría el último valor que tuviese (se inicializa a 100).
+ - Si hubiese algún problema con el Oráculo, se mantendría el último valor válido que tuviese.
 
