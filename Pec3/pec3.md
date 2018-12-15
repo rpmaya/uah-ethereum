@@ -133,9 +133,30 @@ function _transfer(address _from, address _to, uint256 _value) internal notStopp
      */
     function burn(uint256 _value) public notStopped returns (bool success) {...}
 ```
+
 TESTING
-1. TODO (Justificar y comentar)
+
 ![Img34](./img/Test.png)
+
+- Cuando se despliega el contrato, al constructor le pasamos como parámetros el "Supply", el "Name" y el "Symbol" del Token:
+  1. Should put 100000 Tokens in the first account: Comprueba que en la cuenta inicial (owner), tiene asignado todo el "supply".
+  2. Should be 10000 Tokens as total supply: Comprueba el "suppy".
+  3. Should be RicToken as token name: Comprueba el "name".
+  4. Should be RIC as token name: Comprueba el "symbol".
+
+- Comprobamos que se pueden enviar correctamente tokens desde una cuenta X a una cuenta Y:
+  1. Should send tokens correctly: Obtenemos los balances iniciales de las cuentas X e Y (direcciones 0 y 1 en este caso) llamando a nuestra función balanceOf. Después llamamos a la función transfer con 100 Tokens como amount. Y volvemos a comprobar los balances. Donde la cuenta X debería tener 100 Tokens menos y la cuenta Y 100 Tokens más.
+
+- Comprobamos que se pueden comprar Tokens correctamente con Ether:
+  1. Should buy tokens correctly: Se obtienen los balances iniciales del owner del contrato (account[0]) y del comprador (account[2]) de Tokens. Después llamamos a la función buy para comprar Tokens con 3 Ethers. Se vuelve a obtener los balances y a través del Oráculo obtenemos la Conversión (precio ETH/EUR) que se multiplicará por el amount (3), y ese será el número de Tokens comprados. Se comprueba que la cuenta del propietario tiene ese número de Tokens comprados menos, y el comprador de más comparado con sus balances iniciales.
+  2. Should buy tokens correctly, though fallback function: Lo mismo que la anterior, pero en este caso llamamos a la función de web3 sendTransaction para probar nuestra función anónima de fallback.
+
+- Comprobamos que se pueden forjar y quemar nuevos Tokens:
+  1. Should mint tokens correctly: Obtiene el supply inicial a través de la función totalSupply. Después se llama a la función mint con 1000 como parámetro (amount). Y después de obtener el supply se comprueba que ahora este es el inicial más los 1000 (amount) nuevos forjados.
+  2. Should burn tokens correctly: Lo mismo que el anterior, pero en esta ocasión comprobamos que el supply es el inicial menos los 1000 (amount) quemados.
+
+- Comprobamos la funcionalidad "circuit breaker":
+  1. Llamamos a la función breaker que debe poner la variable isStopped a true (con esta variable a true no se podrán realizar ciertas operaciones en el contrato: modifier notStopped). 
 
 EXTRAS
 1. Uso de Oráculos
